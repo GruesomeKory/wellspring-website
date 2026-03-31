@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When The Church Becomes the Frontline | Wellspring</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --color-navy: #122a3a;
+    --color-navy-deep: #0c1e2b;
+    --color-navy-light: #1b3a4f;
+    --color-cyan: #00aeef;
+    --color-cyan-light: #4fc8f5;
+    --color-cyan-soft: #e6f6fd;
+    --color-cream: #faf8f5;
+    --color-warm-white: #ffffff;
+    --color-warm-gray: #f4f1ec;
+    --color-copper: #cc8a48;
+    --color-copper-dark: #b07638;
+    --color-text: #3a3a3a;
+    --color-text-light: #6b6b6b;
+    --font-heading: 'Raleway', 'Segoe UI', sans-serif;
+    --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+    --max-width: 1140px;
+    --section-pad: clamp(3.5rem, 8vw, 6rem);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: var(--color-cream);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(18,42,58,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 32px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+    position: absolute; left: 32px;
+  }
+  .nav-logo-svg { height: 40px; width: auto; }
+  .nav-logo-svg path[fill="#0f2f42"] { fill: #ffffff; }
+  .nav-logo-icon-mobile { display: none; height: 36px; width: auto; }
+  .nav-center {
+    display: flex; align-items: center; gap: 24px;
+  }
+  .nav-right {
+    position: absolute; right: 32px;
+  }
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.88rem; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: #ffffff; }
+  .nav-cta {
+    font-family: var(--font-body);
+    font-size: 0.75rem; font-weight: 600;
+    color: var(--color-warm-white);
+    background: var(--color-cyan);
+    padding: 10px 24px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #009ad6; }
+  .hero {
+    padding: calc(var(--section-pad) + 3.5rem) 2rem var(--section-pad);
+    background: #122a3a;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -60px;
+    width: 450px; height: 450px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,174,239,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: var(--max-width); margin: 0 auto;
+    display: flex; gap: 4rem; align-items: flex-start;
+  }
+  .hero-left {
+    position: sticky; top: 100px;
+    flex: 1; min-width: 0;
+  }
+  .hero-right {
+    flex: 1; min-width: 0;
+  }
+  .guide-mockup-img {
+    width: 100%; max-width: 340px; display: block; margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  }
+  .hero-left-description {
+    font-size: 1.02rem; color: rgba(255,255,255,0.7);
+    line-height: 1.7; margin-top: 1.5rem; margin-bottom: 1.2rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-cyan); margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.1rem, 4vw, 3rem); font-weight: 600;
+    color: var(--color-warm-white); line-height: 1.15; margin-bottom: 1.2rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--color-cyan-light); font-weight: 500; }
+  .hero-sub {
+    font-size: 1.1rem; color: rgba(255,255,255,0.7);
+    line-height: 1.7; margin-bottom: 1.5rem; max-width: 520px;
+  }
+  .hero-trust {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.8rem;
+  }
+  .form-card {
+    background: rgba(255,255,255,0.97); border-radius: 16px;
+    padding: 2.5rem 2.2rem; margin-top: 1.5rem;
+    box-shadow: 0 4px 30px rgba(18,42,58,0.08), 0 1px 3px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .form-card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem; font-weight: 600;
+    color: var(--color-navy); margin-bottom: 0.5rem; text-align: center;
+  }
+  .form-card .form-sub {
+    font-size: 0.9rem; color: var(--color-text-light);
+    text-align: center; margin-bottom: 1.6rem;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block; font-size: 0.82rem; font-weight: 400;
+    letter-spacing: 0.04em; color: var(--color-navy);
+    margin-bottom: 0.35rem; text-transform: uppercase;
+  }
+  .form-group input {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1.5px solid #d9dde0; border-radius: 999px;
+    font-family: var(--font-body); font-size: 0.95rem;
+    color: var(--color-text); background: #fafbfc;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+  }
+  .form-group input::placeholder { color: #b0b5ba; }
+  .form-group input:focus {
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 0 3px rgba(0,174,239,0.1);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .btn-primary {
+    display: block; width: 100%; padding: 0.9rem 1.5rem; margin-top: 1.5rem;
+    background: var(--color-copper); color: var(--color-warm-white);
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; border: none;
+    cursor: pointer; transition: background 0.25s, transform 0.15s;
+    border-radius: 999px;
+  }
+  .btn-primary:hover { background: var(--color-copper-dark); transform: translateY(-1px); }
+  .form-privacy {
+    text-align: center; font-size: 0.78rem;
+    color: var(--color-text-light); margin-top: 0.9rem;
+  }
+  .form-privacy svg { vertical-align: -2px; margin-right: 3px; }
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-cyan); margin-bottom: 0.8rem;
+  }
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600;
+    color: var(--color-navy); line-height: 1.2; margin-bottom: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+  .inside-list { list-style: none; }
+  .inside-list li {
+    display: flex; gap: 0.9rem; padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.95rem; line-height: 1.45;
+    color: rgba(255,255,255,0.85);
+  }
+  .inside-list li:last-child { border-bottom: none; }
+  .inside-list .check-icon {
+    flex-shrink: 0; width: 22px; height: 22px;
+    background: rgba(0,174,239,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .inside-list .check-icon svg { width: 12px; height: 12px; }
+  .guide-mockup {
+    background: linear-gradient(145deg, #1b3a4f 0%, #244a62 100%);
+    border-radius: 16px; padding: 3rem 2rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .guide-mockup::after {
+    content: ''; position: absolute; bottom: -30px; right: -30px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(0,174,239,0.12);
+  }
+  .guide-mockup::before {
+    content: ''; position: absolute; top: -20px; left: -20px;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(0,174,239,0.08);
+  }
+  .mockup-logo-icon { width: 48px; height: 48px; margin: 0 auto 1.2rem; opacity: 0.9; }
+  .mockup-badge {
+    display: inline-block; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-navy); background: var(--color-cyan);
+    padding: 0.35rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .mockup-title {
+    font-family: var(--font-heading);
+    font-size: 1.55rem; font-weight: 700;
+    color: var(--color-warm-white); line-height: 1.3; margin-bottom: 0.6rem;
+  }
+  .mockup-subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.65); font-style: italic; }
+  .mockup-pages { margin-top: 1.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+  .stats {
+    padding: var(--section-pad) 2rem;
+    background: var(--color-navy-deep);
+  }
+  .stats-inner { max-width: var(--max-width); margin: 0 auto; text-align: center; }
+  .stats .section-eyebrow { color: var(--color-cyan); }
+  .stats .section-heading { color: var(--color-warm-white); margin-bottom: 0.7rem; }
+  .stats-subtitle {
+    font-size: 1.05rem; color: rgba(255,255,255,0.55);
+    max-width: 600px; margin: 0 auto 4rem; line-height: 1.6;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+  .stat-card {
+    padding: 0; text-align: left;
+    background: none; border: none; border-radius: 0;
+    display: flex; flex-direction: column;
+  }
+  .stat-card:hover { background: none; }
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 6vw, 5rem); font-weight: 400;
+    color: var(--color-warm-white); line-height: 1; margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+  .stat-label {
+    font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.45;
+    padding-bottom: 1.5rem; margin-top: auto;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .stats-source {
+    margin-top: 3rem; font-size: 0.75rem;
+    color: rgba(255,255,255,0.25); font-style: italic;
+  }
+  .who-for { padding: var(--section-pad) 2rem; background: var(--color-warm-white); }
+  .who-for-inner {
+    max-width: var(--max-width); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+  .who-list { list-style: none; margin-top: 0.5rem; }
+  .who-list li {
+    padding: 1rem 1.2rem; padding-left: 2.8rem;
+    position: relative; font-size: 1.02rem; line-height: 1.55;
+    background: var(--color-cream); border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  .who-list li::before {
+    content: ''; position: absolute; left: 1.2rem; top: 1.4rem;
+    width: 8px; height: 8px; background: var(--color-cyan); border-radius: 50%;
+  }
+  .who-text { font-size: 1.02rem; color: var(--color-text); line-height: 1.7; }
+  .who-text p + p { margin-top: 1rem; }
+  .scripture-block {
+    margin-top: 2rem; padding: 1.3rem 1.5rem;
+    background: var(--color-cyan-soft);
+    border-left: 3px solid var(--color-cyan);
+    border-radius: 0 10px 10px 0;
+    font-family: var(--font-heading);
+    font-style: italic; font-size: 1rem;
+    color: var(--color-navy); line-height: 1.6;
+  }
+  .scripture-block cite {
+    display: block; margin-top: 0.5rem;
+    font-family: var(--font-body); font-style: normal;
+    font-weight: 600; font-size: 0.82rem; color: var(--color-navy-light);
+  }
+  .founder { padding: var(--section-pad) 2rem; background: var(--color-warm-white); }
+  .founder-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .founder-avatar {
+    width: 90px; height: 90px;
+    border-radius: 50%; margin: 0 auto 1.5rem;
+    object-fit: cover;
+  }
+  .founder-name {
+    font-family: var(--font-heading);
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--color-navy); margin-bottom: 0.2rem;
+  }
+  .founder-title {
+    font-size: 0.88rem; color: var(--color-cyan);
+    font-weight: 600; margin-bottom: 1.2rem; letter-spacing: 0.02em;
+  }
+  .founder-bio {
+    font-size: 1.02rem; color: var(--color-text);
+    line-height: 1.75; max-width: 600px; margin: 0 auto;
+  }
+  .consult {
+    padding: var(--section-pad) 2rem;
+    background: linear-gradient(170deg, var(--color-cyan-soft) 0%, #dff0f8 50%, var(--color-cream) 100%);
+  }
+  .consult-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .consult .section-heading { margin-bottom: 0.7rem; }
+  .consult-text {
+    font-size: 1.05rem; color: var(--color-text); line-height: 1.7;
+    margin-bottom: 1rem; max-width: 560px;
+    margin-left: auto; margin-right: auto;
+  }
+  .consult-includes {
+    list-style: none; display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 0.6rem 1.8rem;
+    margin-bottom: 2rem; font-size: 0.92rem; color: var(--color-text-light);
+  }
+  .consult-includes li::before {
+    content: '\2713'; display: inline-block; margin-right: 0.4rem;
+    color: var(--color-cyan); font-weight: 700;
+  }
+  .btn-secondary {
+    display: inline-block; padding: 1rem 2.5rem;
+    background: var(--color-navy); color: var(--color-warm-white);
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; border: none;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.25s, transform 0.15s;
+    border-radius: 999px;
+  }
+  .btn-secondary:hover { background: var(--color-navy-deep); transform: translateY(-1px); }
+  .consult-note { margin-top: 1rem; font-size: 0.82rem; color: var(--color-text-light); }
+  .final-cta { padding: var(--section-pad) 2rem; background: var(--color-cream); text-align: center; }
+  .final-cta-inner { max-width: 600px; margin: 0 auto; }
+  .final-cta .section-heading { margin-bottom: 0.7rem; }
+  .final-cta-text {
+    font-size: 1.02rem; color: var(--color-text-light);
+    line-height: 1.65; margin-bottom: 1.5rem;
+  }
+  footer {
+    padding: 2.5rem 2rem; background: var(--color-navy-deep); text-align: center;
+  }
+  .footer-logo {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .footer-logo span {
+    font-family: var(--font-body); font-size: 1.1rem; font-weight: 700;
+    color: rgba(255,255,255,0.7);
+  }
+  footer p { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.8; }
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--color-cyan); }
+  @media (max-width: 900px) {
+    .hero-inner { flex-direction: column; gap: 2rem; align-items: stretch; }
+    .hero-left { position: static; text-align: center; align-self: center; }
+    .guide-mockup-img { max-width: 280px; }
+    .hero-right { text-align: left; width: 100%; }
+    .hero-left-description { text-align: left; }
+    .inside-list { text-align: left; }
+    .form-card { max-width: none; margin: 1rem 0 0; text-align: left; }
+    .who-for-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .nav { justify-content: space-between; padding: 20px 24px; }
+    .nav-brand { position: static; }
+    .nav-logo-svg { display: none; }
+    .nav-logo-icon-mobile { display: block; }
+    .nav-center { display: none; }
+    .nav-right { position: static; }
+  }
+  @media (max-width: 550px) {
+    .hero { padding: calc(var(--section-pad) + 2.5rem) 1.2rem var(--section-pad); }
+    .guide-mockup-img { max-width: 220px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem 1.2rem; }
+    .consult-includes { flex-direction: column; align-items: center; }
+    .nav { padding: 16px 16px; }
+    .nav-logo-icon-mobile { height: 32px; }
+    .nav-cta { font-size: 0.75rem; padding: 8px 16px; }
+    .section-heading { font-size: clamp(1.4rem, 5vw, 2.2rem); }
+    .hero h1 { font-size: clamp(1.8rem, 6vw, 3rem); }
+    .founder-bio { font-size: 0.95rem; }
+    .consult-text { font-size: 0.95rem; }
+    footer { padding: 2rem 1.2rem; }
+  }
+
+  /* Scroll animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+  .fade-up-delay-4 { transition-delay: 0.4s; }
+
+  /* Hero entrance — plays once on load */
+  .hero-left { animation: slideUp 0.8s ease both; }
+  .hero-right { animation: slideUp 0.8s 0.2s ease both; }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up, .hero-left, .hero-right { animation: none; opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo-icon-mobile" viewBox="155 0 120 100" xmlns="http://www.w3.org/2000/svg"><path fill="#00b6f1" d="M179.88,52.8h0c13.58,6.06,18.55,5.95,23.72,6.38.08.02.85.11,2.13.25-3.12-2.52-5.12-6.36-5.12-10.68,0-7.5,6-13.58,13.45-13.74,7.45.17,13.45,6.24,13.45,13.74,0,4.32-2,8.16-5.12,10.68,1.28-.13,2.04-.23,2.13-.25h0c5.17-.43,14.4-1.46,23.72-6.38,20.69-10.91,28.44-34.52,28.44-34.52,2.32-6.81-.77-14.53-7.42-17.26-7.23-2.96-15.34.8-17.83,8.08,0,0-4.35,12.66-7.87,22.89-1.44,4.19-7.37,4.17-8.8-.01l-7.81-22.88s0,0,0-.01c-.14-.42-.31-.83-.49-1.23,0-.02-.01-.03-.02-.05-.18-.38-.37-.76-.58-1.12-.01-.03-.03-.05-.04-.08-.21-.36-.44-.7-.68-1.04-.02-.02-.03-.04-.04-.06-.25-.35-.53-.68-.81-1.01,0,0,0,0,0,0-.84-.94-1.82-1.76-2.92-2.45-.02-.02-.05-.03-.07-.05-.3-.18-.6-.35-.92-.51-.09-.05-.17-.09-.26-.14-.26-.12-.52-.23-.79-.34-.16-.06-.31-.13-.47-.19-.08-.03-.15-.07-.24-.09-.16-.05-.31-.09-.47-.13-.2-.06-.39-.12-.59-.17-.23-.06-.45-.11-.68-.15-.21-.04-.41-.08-.62-.11-.23-.03-.45-.06-.68-.08-.21-.02-.43-.04-.64-.05-.22-.01-.44-.01-.66-.01-.22,0-.44,0-.66.01-.22.01-.43.03-.64.05-.23.02-.45.05-.68.08-.21.03-.42.07-.62.11-.23.05-.45.09-.68.15-.2.05-.4.11-.59.17-.16.05-.31.08-.47.13-.08.03-.16.06-.24.09-.16.06-.32.12-.47.19-.27.11-.53.22-.79.34-.09.04-.18.09-.26.14-.31.16-.62.32-.92.51-.03.02-.05.03-.07.05-1.1.68-2.08,1.51-2.92,2.45,0,0,0,0,0,0-.29.32-.56.66-.81,1.01-.02.02-.03.04-.04.06-.24.34-.47.68-.68,1.04-.02.03-.03.05-.04.08-.21.36-.41.74-.58,1.12,0,.02-.01.03-.02.05-.18.4-.35.81-.49,1.23,0,0,0,0,0,.01l-7.56,22.84c-1.39,4.2-7.31,4.27-8.79.1-3.58-10.06-7.95-22.44-7.95-22.44-2.32-6.81-9.5-11.02-16.43-9.11-7.53,2.08-11.65,10.02-9.17,17.3,0,0,4.23,19,28.27,35.02Z"/><path fill="#00b6f1" d="M255.44,58.08c-16.72,8.64-28.56,23.5-28.18,31.3.17,3.45,1.51,5.9,3.49,7.57,0,0,0,.02,0,.03.42.34.85.67,1.32.96.02.02.05.03.07.05.3.18.6.35.92.51.09.05.17.09.26.14.26.12.52.23.79.34.16.06.31.13.47.19.08.03.15.07.24.09.16.05.31.09.47.13.2.06.39.12.59.17.23.06.45.11.68.15.21.04.41.08.62.11.23.03.45.06.68.08.21.02.43.04.64.05.22.01.44.01.66.01.22,0,.44,0,.66-.01.22-.01.43-.03.64-.05.23-.02.45-.05.68-.08.21-.03.42-.07.62-.11.23-.05.45-.09.68-.15.2-.05.4-.11.59-.17.16-.05.31-.08.47-.13.08-.03.16-.06.24-.09.16-.06.32-.12.47-.19.27-.11.53-.22.79-.34.09-.04.18-.09.26-.14.31-.16.62-.32.92-.51.03-.02.05-.03.07-.05,1.1-.68,2.08-1.51,2.92-2.45,0,0,0,0,0,0,.29-.32.56-.66.81-1.01.02-.02.03-.04.04-.06.24-.34.47-.68.68-1.04.02-.03.03-.05.04-.08.21-.36.41-.74.58-1.12,0-.02.01-.03.02-.05.18-.4.35-.81.49-1.23,0,0,0,0,0-.01l10.47-30.65c.82-2.39-1.6-4.65-3.91-3.61-.96.43-1.96.93-2.99,1.46Z"/><path fill="#00b6f1" d="M199.3,95.48c.2-.22.38-.46.56-.69.91-1.45,1.51-3.22,1.62-5.41.37-7.8-11.47-22.66-28.18-31.3-.26-.14-.52-.27-.78-.4-3.21-1.62-6.78,1.47-5.61,4.87l9.67,28.33s0,0,0,.01c.14.42.31.83.49,1.23,0,.02.01.03.02.05.18.38.37.76.58,1.12.01.03.03.05.04.08.21.36.44.7.68,1.04.02.02.03.04.04.06.25.35.53.68.81,1.01,0,0,0,0,0,0,.84.94,1.82,1.76,2.92,2.45.02.02.05.03.07.05.3.18.6.35.92.51.09.05.17.09.26.14.26.12.52.23.79.34.16.06.31.13.47.19.08.03.15.07.24.09.16.05.31.09.47.13.2.06.39.12.59.17.23.06.45.11.68.15.21.04.41.08.62.11.23.03.45.06.68.08.21.02.43.04.64.05.22.01.44.01.66.01.22,0,.44,0,.66-.01.22-.01.43-.03.64-.05.23-.02.45-.05.68-.08.21-.03.42-.07.62-.11.23-.05.45-.09.68-.15.2-.05.4-.11.59-.17.16-.05.31-.08.47-.13.08-.03.16-.06.24-.09.16-.06.32-.12.47-.19.27-.11.53-.22.79-.34.09-.04.18-.09.26-.14.31-.16.62-.32.92-.51.03-.02.05-.03.07-.05,1.1-.68,2.08-1.51,2.92-2.45,0,0,0,0,0,0Z"/></svg>
+    <svg class="nav-logo-svg" viewBox="0 0 428.32 223.93" xmlns="http://www.w3.org/2000/svg"><path fill="#00b6f1" d="M179.88,52.8h0c13.58,6.06,18.55,5.95,23.72,6.38.08.02.85.11,2.13.25-3.12-2.52-5.12-6.36-5.12-10.68,0-7.5,6-13.58,13.45-13.74,7.45.17,13.45,6.24,13.45,13.74,0,4.32-2,8.16-5.12,10.68,1.28-.13,2.04-.23,2.13-.25h0c5.17-.43,14.4-1.46,23.72-6.38,20.69-10.91,28.44-34.52,28.44-34.52,2.32-6.81-.77-14.53-7.42-17.26-7.23-2.96-15.34.8-17.83,8.08,0,0-4.35,12.66-7.87,22.89-1.44,4.19-7.37,4.17-8.8-.01l-7.81-22.88s0,0,0-.01c-.14-.42-.31-.83-.49-1.23,0-.02-.01-.03-.02-.05-.18-.38-.37-.76-.58-1.12-.01-.03-.03-.05-.04-.08-.21-.36-.44-.7-.68-1.04-.02-.02-.03-.04-.04-.06-.25-.35-.53-.68-.81-1.01,0,0,0,0,0,0-.84-.94-1.82-1.76-2.92-2.45-.02-.02-.05-.03-.07-.05-.3-.18-.6-.35-.92-.51-.09-.05-.17-.09-.26-.14-.26-.12-.52-.23-.79-.34-.16-.06-.31-.13-.47-.19-.08-.03-.15-.07-.24-.09-.16-.05-.31-.09-.47-.13-.2-.06-.39-.12-.59-.17-.23-.06-.45-.11-.68-.15-.21-.04-.41-.08-.62-.11-.23-.03-.45-.06-.68-.08-.21-.02-.43-.04-.64-.05-.22-.01-.44-.01-.66-.01-.22,0-.44,0-.66.01-.22.01-.43.03-.64.05-.23.02-.45.05-.68.08-.21.03-.42.07-.62.11-.23.05-.45.09-.68.15-.2.05-.4.11-.59.17-.16.05-.31.08-.47.13-.08.03-.16.06-.24.09-.16.06-.32.12-.47.19-.27.11-.53.22-.79.34-.09.04-.18.09-.26.14-.31.16-.62.32-.92.51-.03.02-.05.03-.07.05-1.1.68-2.08,1.51-2.92,2.45,0,0,0,0,0,0-.29.32-.56.66-.81,1.01-.02.02-.03.04-.04.06-.24.34-.47.68-.68,1.04-.02.03-.03.05-.04.08-.21.36-.41.74-.58,1.12,0,.02-.01.03-.02.05-.18.4-.35.81-.49,1.23,0,0,0,0,0,.01l-7.56,22.84c-1.39,4.2-7.31,4.27-8.79.1-3.58-10.06-7.95-22.44-7.95-22.44-2.32-6.81-9.5-11.02-16.43-9.11-7.53,2.08-11.65,10.02-9.17,17.3,0,0,4.23,19,28.27,35.02Z"/><path fill="#00b6f1" d="M255.44,58.08c-16.72,8.64-28.56,23.5-28.18,31.3.17,3.45,1.51,5.9,3.49,7.57,0,0,0,.02,0,.03.42.34.85.67,1.32.96.02.02.05.03.07.05.3.18.6.35.92.51.09.05.17.09.26.14.26.12.52.23.79.34.16.06.31.13.47.19.08.03.15.07.24.09.16.05.31.09.47.13.2.06.39.12.59.17.23.06.45.11.68.15.21.04.41.08.62.11.23.03.45.06.68.08.21.02.43.04.64.05.22.01.44.01.66.01.22,0,.44,0,.66-.01.22-.01.43-.03.64-.05.23-.02.45-.05.68-.08.21-.03.42-.07.62-.11.23-.05.45-.09.68-.15.2-.05.4-.11.59-.17.16-.05.31-.08.47-.13.08-.03.16-.06.24-.09.16-.06.32-.12.47-.19.27-.11.53-.22.79-.34.09-.04.18-.09.26-.14.31-.16.62-.32.92-.51.03-.02.05-.03.07-.05,1.1-.68,2.08-1.51,2.92-2.45,0,0,0,0,0,0,.29-.32.56-.66.81-1.01.02-.02.03-.04.04-.06.24-.34.47-.68.68-1.04.02-.03.03-.05.04-.08.21-.36.41-.74.58-1.12,0-.02.01-.03.02-.05.18-.4.35-.81.49-1.23,0,0,0,0,0-.01l10.47-30.65c.82-2.39-1.6-4.65-3.91-3.61-.96.43-1.96.93-2.99,1.46Z"/><path fill="#00b6f1" d="M199.3,95.48c.2-.22.38-.46.56-.69.91-1.45,1.51-3.22,1.62-5.41.37-7.8-11.47-22.66-28.18-31.3-.26-.14-.52-.27-.78-.4-3.21-1.62-6.78,1.47-5.61,4.87l9.67,28.33s0,0,0,.01c.14.42.31.83.49,1.23,0,.02.01.03.02.05.18.38.37.76.58,1.12.01.03.03.05.04.08.21.36.44.7.68,1.04.02.02.03.04.04.06.25.35.53.68.81,1.01,0,0,0,0,0,0,.84.94,1.82,1.76,2.92,2.45.02.02.05.03.07.05.3.18.6.35.92.51.09.05.17.09.26.14.26.12.52.23.79.34.16.06.31.13.47.19.08.03.15.07.24.09.16.05.31.09.47.13.2.06.39.12.59.17.23.06.45.11.68.15.21.04.41.08.62.11.23.03.45.06.68.08.21.02.43.04.64.05.22.01.44.01.66.01.22,0,.44,0,.66-.01.22-.01.43-.03.64-.05.23-.02.45-.05.68-.08.21-.03.42-.07.62-.11.23-.05.45-.09.68-.15.2-.05.4-.11.59-.17.16-.05.31-.08.47-.13.08-.03.16-.06.24-.09.16-.06.32-.12.47-.19.27-.11.53-.22.79-.34.09-.04.18-.09.26-.14.31-.16.62-.32.92-.51.03-.02.05-.03.07-.05,1.1-.68,2.08-1.51,2.92-2.45,0,0,0,0,0,0Z"/><path fill="#0f2f42" d="M26.64,146.42h10.57l6.66,19.57,6.66-19.57h10.66l-10.07,26.89,7.49,18.9,16.74-45.96h12.49l-24.06,59.11h-9.66l-10.24-24.81-10.24,24.81h-9.66L0,146.26h12.41l16.82,45.96,7.33-18.9-9.9-26.89Z"/><path fill="#0f2f42" d="M104.88,206.2c-3.5,0-6.66-.6-9.49-1.79-2.83-1.19-5.24-2.82-7.24-4.87-2-2.05-3.54-4.44-4.62-7.16-1.08-2.72-1.62-5.58-1.62-8.58s.53-6.04,1.58-8.78,2.58-5.16,4.58-7.24c2-2.08,4.43-3.73,7.28-4.95,2.86-1.22,6.06-1.83,9.62-1.83s6.73.61,9.53,1.83c2.8,1.22,5.19,2.86,7.16,4.91,1.97,2.05,3.47,4.44,4.5,7.16,1.03,2.72,1.54,5.55,1.54,8.49,0,.72-.01,1.42-.04,2.08-.03.67-.1,1.22-.21,1.66h-33.72c.17,1.72.58,3.25,1.25,4.58s1.53,2.47,2.58,3.41c1.05.94,2.25,1.66,3.58,2.16,1.33.5,2.72.75,4.16.75,2.22,0,4.31-.54,6.29-1.62,1.97-1.08,3.32-2.51,4.04-4.29l9.57,2.66c-1.61,3.33-4.18,6.07-7.7,8.2-3.53,2.14-7.73,3.2-12.61,3.2ZM116.2,179.89c-.28-3.27-1.49-5.9-3.62-7.87-2.14-1.97-4.73-2.96-7.78-2.96-1.5,0-2.9.26-4.2.79-1.31.53-2.46,1.26-3.46,2.21-1,.94-1.82,2.08-2.46,3.41-.64,1.33-1.01,2.8-1.12,4.41h22.65Z"/><path fill="#0f2f42" d="M134.44,144.59h11.16v46.29c0,3.39,1.53,5.08,4.58,5.08.61,0,1.32-.11,2.12-.33s1.57-.47,2.29-.75l1.5,8.91c-1.5.72-3.25,1.28-5.25,1.66-2,.39-3.8.58-5.41.58-3.5,0-6.2-.93-8.12-2.79-1.92-1.86-2.87-4.51-2.87-7.95v-50.7Z"/><path fill="#0f2f42" d="M160.83,144.59h11.16v46.29c0,3.39,1.53,5.08,4.58,5.08.61,0,1.32-.11,2.12-.33s1.57-.47,2.29-.75l1.5,8.91c-1.5.72-3.25,1.28-5.25,1.66-2,.39-3.8.58-5.41.58-3.5,0-6.2-.93-8.12-2.79-1.92-1.86-2.87-4.51-2.87-7.95v-50.7Z"/><path fill="#0f2f42" d="M204.53,206.2c-1.78,0-3.62-.14-5.54-.42-1.92-.28-3.79-.67-5.62-1.17-1.83-.5-3.58-1.11-5.24-1.83-1.66-.72-3.14-1.53-4.41-2.41l4.5-7.58c5.55,3.61,10.91,5.41,16.07,5.41,2.33,0,4.16-.42,5.5-1.25,1.33-.83,2-2.02,2-3.58s-.79-2.71-2.37-3.46-4.23-1.57-7.95-2.46c-2.83-.67-5.24-1.36-7.24-2.08-2-.72-3.61-1.55-4.83-2.5-1.22-.94-2.11-2.03-2.66-3.25-.56-1.22-.83-2.66-.83-4.33,0-2.22.44-4.22,1.33-6,.89-1.77,2.12-3.29,3.7-4.54s3.44-2.21,5.58-2.87c2.14-.67,4.45-1,6.95-1,3.11,0,6.2.49,9.28,1.46s5.95,2.29,8.62,3.95l-4.58,6.91c-2.44-1.55-4.74-2.68-6.91-3.37-2.16-.69-4.33-1.04-6.49-1.04-2,0-3.68.39-5.04,1.16-1.36.78-2.04,2.03-2.04,3.75,0,1.5.65,2.58,1.96,3.25,1.3.67,3.62,1.42,6.95,2.25,3.11.78,5.76,1.55,7.95,2.33,2.19.78,4,1.67,5.41,2.66s2.44,2.15,3.08,3.46c.64,1.3.96,2.87.96,4.7,0,2.11-.43,4.03-1.29,5.74-.86,1.72-2.07,3.18-3.62,4.37-1.55,1.19-3.46,2.11-5.7,2.75s-4.73.96-7.45.96Z"/><path fill="#0f2f42" d="M255.65,206.2c-3.39,0-6.36-.76-8.91-2.29s-4.55-3.59-5.99-6.2v25.39h-11.16v-61.36h9.74v7.49c1.61-2.55,3.69-4.56,6.24-6.04,2.55-1.47,5.49-2.21,8.82-2.21,2.94,0,5.66.6,8.16,1.79,2.5,1.19,4.65,2.8,6.45,4.83,1.8,2.03,3.22,4.41,4.25,7.16,1.03,2.75,1.54,5.65,1.54,8.7s-.47,6.13-1.42,8.91c-.94,2.78-2.26,5.19-3.95,7.24-1.69,2.05-3.72,3.66-6.08,4.83-2.36,1.16-4.93,1.75-7.7,1.75ZM251.99,196.71c1.66,0,3.2-.36,4.62-1.08s2.62-1.69,3.62-2.91,1.78-2.64,2.33-4.25.83-3.27.83-5c0-1.83-.31-3.54-.92-5.12-.61-1.58-1.46-2.96-2.54-4.12-1.08-1.16-2.36-2.08-3.83-2.75-1.47-.67-3.07-1-4.79-1-1.06,0-2.14.18-3.25.54s-2.14.87-3.08,1.54c-.94.67-1.79,1.44-2.54,2.33-.75.89-1.32,1.86-1.71,2.91v10.24c1,2.5,2.53,4.57,4.58,6.2,2.05,1.64,4.27,2.46,6.66,2.46Z"/><path fill="#0f2f42" d="M308.19,171.4c-3.39.06-6.41.71-9.08,1.96s-4.58,3.12-5.74,5.62v26.39h-11.16v-43.63h10.24v9.32c1.5-3,3.46-5.41,5.87-7.24,2.41-1.83,4.95-2.75,7.62-2.75.61,0,1.07.01,1.37.04.31.03.6.07.88.12v10.16Z"/><path fill="#0f2f42" d="M314.43,155.66v-11.07h11.16v11.07h-11.16ZM314.43,205.37v-43.63h11.16v43.63h-11.16Z"/><path fill="#0f2f42" d="M376.04,205.37h-11.16v-24.48c0-3.5-.61-6.05-1.83-7.66-1.22-1.61-2.91-2.42-5.08-2.42-1.11,0-2.25.22-3.41.67-1.17.45-2.26,1.07-3.29,1.87-1.03.81-1.96,1.76-2.79,2.87s-1.44,2.33-1.83,3.66v25.48h-11.16v-43.63h10.07v8.08c1.61-2.77,3.94-4.94,6.99-6.49,3.05-1.55,6.49-2.33,10.32-2.33,2.72,0,4.94.5,6.66,1.5,1.72,1,3.05,2.3,4,3.91.94,1.61,1.6,3.44,1.96,5.5.36,2.05.54,4.14.54,6.24v27.22Z"/><path fill="#0f2f42" d="M402.68,205.61c-2.89,0-5.54-.58-7.95-1.75-2.41-1.17-4.48-2.76-6.2-4.79-1.72-2.02-3.05-4.37-4-7.03-.94-2.66-1.42-5.5-1.42-8.49,0-3.16.5-6.1,1.5-8.82,1-2.72,2.39-5.11,4.16-7.16,1.78-2.05,3.9-3.66,6.37-4.83,2.47-1.16,5.2-1.75,8.2-1.75,3.44,0,6.44.76,8.99,2.29,2.55,1.53,4.63,3.57,6.24,6.12v-7.66h9.74v41.54c0,3.22-.6,6.11-1.79,8.66s-2.87,4.72-5.04,6.49c-2.16,1.77-4.72,3.13-7.66,4.08-2.94.94-6.16,1.42-9.66,1.42-4.83,0-8.87-.79-12.11-2.37-3.25-1.58-6.04-3.82-8.37-6.7l6.08-5.91c1.66,2.05,3.76,3.66,6.28,4.83,2.53,1.16,5.23,1.75,8.12,1.75,1.72,0,3.37-.24,4.95-.71,1.58-.47,2.97-1.21,4.16-2.21,1.19-1,2.14-2.28,2.83-3.83.69-1.55,1.04-3.39,1.04-5.5v-5.49c-1.44,2.5-3.47,4.43-6.08,5.79-2.61,1.36-5.41,2.04-8.41,2.04ZM406.51,196.71c1.22,0,2.39-.19,3.5-.58,1.11-.39,2.12-.92,3.04-1.58.92-.67,1.73-1.44,2.46-2.33.72-.89,1.28-1.83,1.66-2.83v-10.41c-1-2.55-2.55-4.61-4.66-6.16-2.11-1.55-4.33-2.33-6.66-2.33-1.72,0-3.29.38-4.7,1.12s-2.62,1.75-3.62,3c-1,1.25-1.76,2.68-2.29,4.29-.53,1.61-.79,3.27-.79,4.99s.31,3.44.92,5c.61,1.55,1.46,2.91,2.54,4.08,1.08,1.17,2.36,2.08,3.83,2.75,1.47.67,3.07,1,4.79,1Z"/></svg>
+  </a>
+  <div class="nav-center">
+    <a href="#who-for" class="nav-link">Is This You?</a>
+    <a href="#stats" class="nav-link">The Reality</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#consultation" class="nav-link">Next Steps</a>
+  </div>
+  <div class="nav-right">
+    <a href="#download" class="nav-cta">Get the Free Guide</a>
+  </div>
+</nav>
+
+<section class="hero" id="download">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <img class="guide-mockup-img" src="ebook.png" alt="When The Church Becomes the Frontline — Free Church Readiness Guide">
+    </div>
+    <div class="hero-right">
+      <div class="hero-eyebrow">Free Church Readiness Guide</div>
+      <h1>When the Church Becomes <em>the Frontline</em></h1>
+      <p class="hero-sub">
+        This free assessment guide helps church leaders identify gaps in care and build a clear, sustainable pathway forward.
+      </p>
+      <div class="form-card">
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="first_name" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="last_name" placeholder="Your last name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@yourchurch.org" required>
+          </div>
+          <div class="form-group">
+            <label for="role">Church Role / Position</label>
+            <input type="text" id="role" name="church_role" placeholder="e.g., Lead Pastor, Counseling Director">
+          </div>
+          <button type="submit" class="btn-primary">Send Me the Free Guide</button>
+          <p class="form-privacy">
+            <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M9 4.5V4a3 3 0 10-6 0v.5A1.5 1.5 0 002 6v4a1.5 1.5 0 001.5 1.5h5A1.5 1.5 0 0010 10V6a1.5 1.5 0 00-1-1.5z" stroke="#999" stroke-width="1.2"/></svg>
+            No spam, ever. Your information stays private.
+          </p>
+        </form>
+      </div>
+      <p class="hero-left-description">What's inside the guide:</p>
+      <ul class="inside-list">
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#00aeef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>A scored self-assessment across eight areas of church readiness</span>
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#00aeef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Eight barriers that prevent people in your church from getting help</span>
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#00aeef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>A clear path forward from awareness to action</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="who-for" id="who-for">
+  <div class="who-for-inner">
+    <div>
+      <div class="section-eyebrow fade-up">Is This You?</div>
+      <h2 class="section-heading fade-up fade-up-delay-1">This guide is for church leaders who...</h2>
+      <ul class="who-list fade-up fade-up-delay-2">
+        <li>See growing mental and emotional health needs in their congregation</li>
+        <li>Want to care well for people but don't have a clear process in place</li>
+        <li>Worry their pastors and staff are carrying too much</li>
+        <li>Know they need trained lay leaders but aren't sure where to start</li>
+        <li>Are looking for a Christ-centered approach that goes beyond a single program</li>
+        <li>Want to respond with both compassion and wisdom when people reach out</li>
+      </ul>
+    </div>
+    <div>
+      <div class="who-text fade-up">
+        <p>
+          You don't need to become a counseling center. You don't need licensed professionals on staff. What you need is a clear, sustainable pathway so that when someone in your church reaches out for help, you can respond with confidence.
+        </p>
+        <p>
+          This guide will help you see where you are today, where the gaps exist, and what a next step forward looks like for your church.
+        </p>
+      </div>
+      <div class="scripture-block fade-up fade-up-delay-1">
+        "Carry each other's burdens, and in this way, you will fulfill the law of Christ."
+        <cite>Galatians 6:2 (NIV)</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" id="stats">
+  <div class="stats-inner">
+    <div class="section-eyebrow fade-up">The Reality for Church Leaders</div>
+    <h2 class="section-heading fade-up fade-up-delay-1">Your pastors and staff are feeling it</h2>
+    <p class="stats-subtitle">
+      These are real numbers from recent research on church leadership health. The need for shared care has never been greater.
+    </p>
+    <div class="stats-grid">
+      <div class="stat-card fade-up fade-up-delay-1">
+        <div class="stat-number" data-target="40" data-suffix="%">0%</div>
+        <div class="stat-label">of pastors have considered leaving their congregation</div>
+      </div>
+      <div class="stat-card fade-up fade-up-delay-2">
+        <div class="stat-number" data-target="50" data-suffix="%">0%</div>
+        <div class="stat-label">have considered leaving ministry entirely since 2020</div>
+      </div>
+      <div class="stat-card fade-up fade-up-delay-3">
+        <div class="stat-number" data-target="56" data-suffix="%">0%</div>
+        <div class="stat-label">of pastors report overwhelming stress</div>
+      </div>
+      <div class="stat-card fade-up fade-up-delay-4">
+        <div class="stat-number" data-target="26" data-suffix="%">0%</div>
+        <div class="stat-label">of pastors say they have personally struggled with mental illness</div>
+      </div>
+    </div>
+    <p class="stats-source">Sources: Barna Group, LifeWay Research, Hartford Institute for Religion Research</p>
+  </div>
+</section>
+
+<section class="founder" id="about">
+  <div class="founder-inner">
+    <div class="section-eyebrow fade-up">About Wellspring</div>
+    <img class="founder-avatar fade-up fade-up-delay-1" src="gina.jpg" alt="Gina, Wellspring Founder">
+    <div class="founder-name fade-up fade-up-delay-2">Gina Colclazier</div>
+    <div class="founder-title fade-up fade-up-delay-2">Wellspring Founder &middot; Missionary &middot; Coach</div>
+    <p class="founder-bio fade-up fade-up-delay-3">
+      Wellspring helps churches launch a holistic, lay-led approach to mental health care. Through guided coaching and a proven framework, churches learn to build safe, sustainable care pathways that serve both their congregation and community. You don't have to figure this out alone.
+    </p>
+  </div>
+</section>
+
+<section class="consult" id="consultation">
+  <div class="consult-inner">
+    <div class="section-eyebrow fade-up">Take the Next Step</div>
+    <h2 class="section-heading fade-up fade-up-delay-1">Book a Free Discovery Conversation</h2>
+    <p class="consult-text fade-up fade-up-delay-2">
+      If this guide reflects what you're seeing in your church, the next step is to gain clarity. A 30-minute discovery conversation gives you space to talk through where you are and explore what a care pathway could look like.
+    </p>
+    <ul class="consult-includes">
+      <li>Review your assessment results</li>
+      <li>Identify where care feels bottlenecked</li>
+      <li>Explore sustainable next steps</li>
+    </ul>
+    <a href="#" class="btn-secondary">Schedule Your 30-Minute Call</a>
+    <p class="consult-note">Free. No pressure. Just a conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <svg height="48" viewBox="0 0 428.32 223.93" xmlns="http://www.w3.org/2000/svg"><path fill="#4fc8f5" d="M179.88,52.8h0c13.58,6.06,18.55,5.95,23.72,6.38.08.02.85.11,2.13.25-3.12-2.52-5.12-6.36-5.12-10.68,0-7.5,6-13.58,13.45-13.74,7.45.17,13.45,6.24,13.45,13.74,0,4.32-2,8.16-5.12,10.68,1.28-.13,2.04-.23,2.13-.25h0c5.17-.43,14.4-1.46,23.72-6.38,20.69-10.91,28.44-34.52,28.44-34.52,2.32-6.81-.77-14.53-7.42-17.26-7.23-2.96-15.34.8-17.83,8.08,0,0-4.35,12.66-7.87,22.89-1.44,4.19-7.37,4.17-8.8-.01l-7.81-22.88s0,0,0-.01c-.14-.42-.31-.83-.49-1.23,0-.02-.01-.03-.02-.05-.18-.38-.37-.76-.58-1.12-.01-.03-.03-.05-.04-.08-.21-.36-.44-.7-.68-1.04-.02-.02-.03-.04-.04-.06-.25-.35-.53-.68-.81-1.01,0,0,0,0,0,0-.84-.94-1.82-1.76-2.92-2.45-.02-.02-.05-.03-.07-.05-.3-.18-.6-.35-.92-.51-.09-.05-.17-.09-.26-.14-.26-.12-.52-.23-.79-.34-.16-.06-.31-.13-.47-.19-.08-.03-.15-.07-.24-.09-.16-.05-.31-.09-.47-.13-.2-.06-.39-.12-.59-.17-.23-.06-.45-.11-.68-.15-.21-.04-.41-.08-.62-.11-.23-.03-.45-.06-.68-.08-.21-.02-.43-.04-.64-.05-.22-.01-.44-.01-.66-.01-.22,0-.44,0-.66.01-.22.01-.43.03-.64.05-.23.02-.45.05-.68.08-.21.03-.42.07-.62.11-.23.05-.45.09-.68.15-.2.05-.4.11-.59.17-.16.05-.31.08-.47.13-.08.03-.16.06-.24.09-.16.06-.32.12-.47.19-.27.11-.53.22-.79.34-.09.04-.18.09-.26.14-.31.16-.62.32-.92.51-.03.02-.05.03-.07.05-1.1.68-2.08,1.51-2.92,2.45,0,0,0,0,0,0-.29.32-.56.66-.81,1.01-.02.02-.03.04-.04.06-.24.34-.47.68-.68,1.04-.02.03-.03.05-.04.08-.21.36-.41.74-.58,1.12,0,.02-.01.03-.02.05-.18.4-.35.81-.49,1.23,0,0,0,0,0,.01l-7.56,22.84c-1.39,4.2-7.31,4.27-8.79.1-3.58-10.06-7.95-22.44-7.95-22.44-2.32-6.81-9.5-11.02-16.43-9.11-7.53,2.08-11.65,10.02-9.17,17.3,0,0,4.23,19,28.27,35.02Z"/><path fill="#4fc8f5" d="M255.44,58.08c-16.72,8.64-28.56,23.5-28.18,31.3.17,3.45,1.51,5.9,3.49,7.57,0,0,0,.02,0,.03.42.34.85.67,1.32.96.02.02.05.03.07.05.3.18.6.35.92.51.09.05.17.09.26.14.26.12.52.23.79.34.16.06.31.13.47.19.08.03.15.07.24.09.16.05.31.09.47.13.2.06.39.12.59.17.23.06.45.11.68.15.21.04.41.08.62.11.23.03.45.06.68.08.21.02.43.04.64.05.22.01.44.01.66.01.22,0,.44,0,.66-.01.22-.01.43-.03.64-.05.23-.02.45-.05.68-.08.21-.03.42-.07.62-.11.23-.05.45-.09.68-.15.2-.05.4-.11.59-.17.16-.05.31-.08.47-.13.08-.03.16-.06.24-.09.16-.06.32-.12.47-.19.27-.11.53-.22.79-.34.09-.04.18-.09.26-.14.31-.16.62-.32.92-.51.03-.02.05-.03.07-.05,1.1-.68,2.08-1.51,2.92-2.45,0,0,0,0,0,0,.29-.32.56-.66.81-1.01.02-.02.03-.04.04-.06.24-.34.47-.68.68-1.04.02-.03.03-.05.04-.08.21-.36.41-.74.58-1.12,0-.02.01-.03.02-.05.18-.4.35-.81.49-1.23,0,0,0,0,0-.01l10.47-30.65c.82-2.39-1.6-4.65-3.91-3.61-.96.43-1.96.93-2.99,1.46Z"/><path fill="#4fc8f5" d="M199.3,95.48c.2-.22.38-.46.56-.69.91-1.45,1.51-3.22,1.62-5.41.37-7.8-11.47-22.66-28.18-31.3-.26-.14-.52-.27-.78-.4-3.21-1.62-6.78,1.47-5.61,4.87l9.67,28.33s0,0,0,.01c.14.42.31.83.49,1.23,0,.02.01.03.02.05.18.38.37.76.58,1.12.01.03.03.05.04.08.21.36.44.7.68,1.04.02.02.03.04.04.06.25.35.53.68.81,1.01,0,0,0,0,0,0,.84.94,1.82,1.76,2.92,2.45.02.02.05.03.07.05.3.18.6.35.92.51.09.05.17.09.26.14.26.12.52.23.79.34.16.06.31.13.47.19.08.03.15.07.24.09.16.05.31.09.47.13.2.06.39.12.59.17.23.06.45.11.68.15.21.04.41.08.62.11.23.03.45.06.68.08.21.02.43.04.64.05.22.01.44.01.66.01.22,0,.44,0,.66-.01.22-.01.43-.03.64-.05.23-.02.45-.05.68-.08.21-.03.42-.07.62-.11.23-.05.45-.09.68-.15.2-.05.4-.11.59-.17.16-.05.31-.08.47-.13.08-.03.16-.06.24-.09.16-.06.32-.12.47-.19.27-.11.53-.22.79-.34.09-.04.18-.09.26-.14.31-.16.62-.32.92-.51.03-.02.05-.03.07-.05,1.1-.68,2.08-1.51,2.92-2.45,0,0,0,0,0,0Z"/><path fill="rgba(255,255,255,0.7)" d="M26.64,146.42h10.57l6.66,19.57,6.66-19.57h10.66l-10.07,26.89,7.49,18.9,16.74-45.96h12.49l-24.06,59.11h-9.66l-10.24-24.81-10.24,24.81h-9.66L0,146.26h12.41l16.82,45.96,7.33-18.9-9.9-26.89Z"/><path fill="rgba(255,255,255,0.7)" d="M104.88,206.2c-3.5,0-6.66-.6-9.49-1.79-2.83-1.19-5.24-2.82-7.24-4.87-2-2.05-3.54-4.44-4.62-7.16-1.08-2.72-1.62-5.58-1.62-8.58s.53-6.04,1.58-8.78,2.58-5.16,4.58-7.24c2-2.08,4.43-3.73,7.28-4.95,2.86-1.22,6.06-1.83,9.62-1.83s6.73.61,9.53,1.83c2.8,1.22,5.19,2.86,7.16,4.91,1.97,2.05,3.47,4.44,4.5,7.16,1.03,2.72,1.54,5.55,1.54,8.49,0,.72-.01,1.42-.04,2.08-.03.67-.1,1.22-.21,1.66h-33.72c.17,1.72.58,3.25,1.25,4.58s1.53,2.47,2.58,3.41c1.05.94,2.25,1.66,3.58,2.16,1.33.5,2.72.75,4.16.75,2.22,0,4.31-.54,6.29-1.62,1.97-1.08,3.32-2.51,4.04-4.29l9.57,2.66c-1.61,3.33-4.18,6.07-7.7,8.2-3.53,2.14-7.73,3.2-12.61,3.2ZM116.2,179.89c-.28-3.27-1.49-5.9-3.62-7.87-2.14-1.97-4.73-2.96-7.78-2.96-1.5,0-2.9.26-4.2.79-1.31.53-2.46,1.26-3.46,2.21-1,.94-1.82,2.08-2.46,3.41-.64,1.33-1.01,2.8-1.12,4.41h22.65Z"/><path fill="rgba(255,255,255,0.7)" d="M134.44,144.59h11.16v46.29c0,3.39,1.53,5.08,4.58,5.08.61,0,1.32-.11,2.12-.33s1.57-.47,2.29-.75l1.5,8.91c-1.5.72-3.25,1.28-5.25,1.66-2,.39-3.8.58-5.41.58-3.5,0-6.2-.93-8.12-2.79-1.92-1.86-2.87-4.51-2.87-7.95v-50.7Z"/><path fill="rgba(255,255,255,0.7)" d="M160.83,144.59h11.16v46.29c0,3.39,1.53,5.08,4.58,5.08.61,0,1.32-.11,2.12-.33s1.57-.47,2.29-.75l1.5,8.91c-1.5.72-3.25,1.28-5.25,1.66-2,.39-3.8.58-5.41.58-3.5,0-6.2-.93-8.12-2.79-1.92-1.86-2.87-4.51-2.87-7.95v-50.7Z"/><path fill="rgba(255,255,255,0.7)" d="M204.53,206.2c-1.78,0-3.62-.14-5.54-.42-1.92-.28-3.79-.67-5.62-1.17-1.83-.5-3.58-1.11-5.24-1.83-1.66-.72-3.14-1.53-4.41-2.41l4.5-7.58c5.55,3.61,10.91,5.41,16.07,5.41,2.33,0,4.16-.42,5.5-1.25,1.33-.83,2-2.02,2-3.58s-.79-2.71-2.37-3.46-4.23-1.57-7.95-2.46c-2.83-.67-5.24-1.36-7.24-2.08-2-.72-3.61-1.55-4.83-2.5-1.22-.94-2.11-2.03-2.66-3.25-.56-1.22-.83-2.66-.83-4.33,0-2.22.44-4.22,1.33-6,.89-1.77,2.12-3.29,3.7-4.54s3.44-2.21,5.58-2.87c2.14-.67,4.45-1,6.95-1,3.11,0,6.2.49,9.28,1.46s5.95,2.29,8.62,3.95l-4.58,6.91c-2.44-1.55-4.74-2.68-6.91-3.37-2.16-.69-4.33-1.04-6.49-1.04-2,0-3.68.39-5.04,1.16-1.36.78-2.04,2.03-2.04,3.75,0,1.5.65,2.58,1.96,3.25,1.3.67,3.62,1.42,6.95,2.25,3.11.78,5.76,1.55,7.95,2.33,2.19.78,4,1.67,5.41,2.66s2.44,2.15,3.08,3.46c.64,1.3.96,2.87.96,4.7,0,2.11-.43,4.03-1.29,5.74-.86,1.72-2.07,3.18-3.62,4.37-1.55,1.19-3.46,2.11-5.7,2.75s-4.73.96-7.45.96Z"/><path fill="rgba(255,255,255,0.7)" d="M255.65,206.2c-3.39,0-6.36-.76-8.91-2.29s-4.55-3.59-5.99-6.2v25.39h-11.16v-61.36h9.74v7.49c1.61-2.55,3.69-4.56,6.24-6.04,2.55-1.47,5.49-2.21,8.82-2.21,2.94,0,5.66.6,8.16,1.79,2.5,1.19,4.65,2.8,6.45,4.83,1.8,2.03,3.22,4.41,4.25,7.16,1.03,2.75,1.54,5.65,1.54,8.7s-.47,6.13-1.42,8.91c-.94,2.78-2.26,5.19-3.95,7.24-1.69,2.05-3.72,3.66-6.08,4.83-2.36,1.16-4.93,1.75-7.7,1.75ZM251.99,196.71c1.66,0,3.2-.36,4.62-1.08s2.62-1.69,3.62-2.91,1.78-2.64,2.33-4.25.83-3.27.83-5c0-1.83-.31-3.54-.92-5.12-.61-1.58-1.46-2.96-2.54-4.12-1.08-1.16-2.36-2.08-3.83-2.75-1.47-.67-3.07-1-4.79-1-1.06,0-2.14.18-3.25.54s-2.14.87-3.08,1.54c-.94.67-1.79,1.44-2.54,2.33-.75.89-1.32,1.86-1.71,2.91v10.24c1,2.5,2.53,4.57,4.58,6.2,2.05,1.64,4.27,2.46,6.66,2.46Z"/><path fill="rgba(255,255,255,0.7)" d="M308.19,171.4c-3.39.06-6.41.71-9.08,1.96s-4.58,3.12-5.74,5.62v26.39h-11.16v-43.63h10.24v9.32c1.5-3,3.46-5.41,5.87-7.24,2.41-1.83,4.95-2.75,7.62-2.75.61,0,1.07.01,1.37.04.31.03.6.07.88.12v10.16Z"/><path fill="rgba(255,255,255,0.7)" d="M314.43,155.66v-11.07h11.16v11.07h-11.16ZM314.43,205.37v-43.63h11.16v43.63h-11.16Z"/><path fill="rgba(255,255,255,0.7)" d="M376.04,205.37h-11.16v-24.48c0-3.5-.61-6.05-1.83-7.66-1.22-1.61-2.91-2.42-5.08-2.42-1.11,0-2.25.22-3.41.67-1.17.45-2.26,1.07-3.29,1.87-1.03.81-1.96,1.76-2.79,2.87s-1.44,2.33-1.83,3.66v25.48h-11.16v-43.63h10.07v8.08c1.61-2.77,3.94-4.94,6.99-6.49,3.05-1.55,6.49-2.33,10.32-2.33,2.72,0,4.94.5,6.66,1.5,1.72,1,3.05,2.3,4,3.91.94,1.61,1.6,3.44,1.96,5.5.36,2.05.54,4.14.54,6.24v27.22Z"/><path fill="rgba(255,255,255,0.7)" d="M402.68,205.61c-2.89,0-5.54-.58-7.95-1.75-2.41-1.17-4.48-2.76-6.2-4.79-1.72-2.02-3.05-4.37-4-7.03-.94-2.66-1.42-5.5-1.42-8.49,0-3.16.5-6.1,1.5-8.82,1-2.72,2.39-5.11,4.16-7.16,1.78-2.05,3.9-3.66,6.37-4.83,2.47-1.16,5.2-1.75,8.2-1.75,3.44,0,6.44.76,8.99,2.29,2.55,1.53,4.63,3.57,6.24,6.12v-7.66h9.74v41.54c0,3.22-.6,6.11-1.79,8.66s-2.87,4.72-5.04,6.49c-2.16,1.77-4.72,3.13-7.66,4.08-2.94.94-6.16,1.42-9.66,1.42-4.83,0-8.87-.79-12.11-2.37-3.25-1.58-6.04-3.82-8.37-6.7l6.08-5.91c1.66,2.05,3.76,3.66,6.28,4.83,2.53,1.16,5.23,1.75,8.12,1.75,1.72,0,3.37-.24,4.95-.71,1.58-.47,2.97-1.21,4.16-2.21,1.19-1,2.14-2.28,2.83-3.83.69-1.55,1.04-3.39,1.04-5.5v-5.49c-1.44,2.5-3.47,4.43-6.08,5.79-2.61,1.36-5.41,2.04-8.41,2.04ZM406.51,196.71c1.22,0,2.39-.19,3.5-.58,1.11-.39,2.12-.92,3.04-1.58.92-.67,1.73-1.44,2.46-2.33.72-.89,1.28-1.83,1.66-2.83v-10.41c-1-2.55-2.55-4.61-4.66-6.16-2.11-1.55-4.33-2.33-6.66-2.33-1.72,0-3.29.38-4.7,1.12s-2.62,1.75-3.62,3c-1,1.25-1.76,2.68-2.29,4.29-.53,1.61-.79,3.27-.79,4.99s.31,3.44.92,5c.61,1.55,1.46,2.91,2.54,4.08,1.08,1.17,2.36,2.08,3.83,2.75,1.47.67,3.07,1,4.79,1Z"/></svg>
+  </div>
+  <p>
+    &copy; 2026 Wellspring Mental Health &amp; Wellness Ministry<br>
+    <a href="mailto:Gina@WellspringThrive.com">Gina@WellspringThrive.com</a> &middot;
+    <a href="https://wellspringthrive.com">WellspringThrive.com</a> &middot;
+    317.506.8017
+  </p>
+</footer>
+
+<script>
+(function() {
+  var animated = false;
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !animated) {
+      animated = true;
+      document.querySelectorAll('.stat-number[data-target]').forEach(function(el) {
+        var target = parseInt(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        var duration = 1500;
+        var start = performance.now();
+        function tick(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+  }, { threshold: 0.3 });
+  observer.observe(document.querySelector('.stats-grid'));
+
+  // Fade-up on scroll
+  var fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    fadeObserver.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
