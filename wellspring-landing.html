@@ -462,41 +462,142 @@
         This free assessment guide helps church leaders identify gaps in care and build a clear, sustainable pathway forward.
       </p>
       <div class="form-card">
-        <form action="#" method="POST">
+        <form id="guide-form">
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First Name</label>
-              <input type="text" id="fname" name="first_name" placeholder="Your first name" required>
+              <input type="text" id="fname" name="FNAME" placeholder="Your first name" required>
             </div>
             <div class="form-group">
               <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="last_name" placeholder="Your last name" required>
+              <input type="text" id="lname" name="LNAME" placeholder="Your last name" required>
             </div>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@yourchurch.org" required>
+            <input type="email" id="email" name="EMAIL" placeholder="you@yourchurch.org" required>
           </div>
           <div class="form-group">
-            <label for="role">Church Role / Position</label>
-            <input type="text" id="role" name="church_role" placeholder="e.g., Lead Pastor, Counseling Director">
+            <label for="church">Church Name</label>
+            <input type="text" id="church" name="MMERGE7" placeholder="e.g., Grace Community Church">
           </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="MMERGE8" placeholder="e.g., Lead Pastor, Executive Pastor">
+          </div>
+          <!-- Mailchimp bot signup protection -->
+          <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_8916cf1013f9ba45c244a58d4_f9674ff996" tabindex="-1" value=""></div>
           <button type="submit" class="btn-primary">Send Me the Free Guide</button>
           <p class="form-privacy">
             <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M9 4.5V4a3 3 0 10-6 0v.5A1.5 1.5 0 002 6v4a1.5 1.5 0 001.5 1.5h5A1.5 1.5 0 0010 10V6a1.5 1.5 0 00-1-1.5z" stroke="#999" stroke-width="1.2"/></svg>
             No spam, ever. Your information stays private.
           </p>
         </form>
+        <div id="form-success" style="display:none; text-align:center; padding:2.5rem 1.5rem;">
+          <svg class="success-check" width="56" height="56" fill="none" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28" fill="#00aeef" opacity="0.12"/><path d="M17 29l7 7 14-15" stroke="#00aeef" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3 class="success-heading">You're all set!</h3>
+          <p class="success-text">Check your email for your free copy of <em>When the Church Becomes the Frontline</em>.</p>
+        </div>
       </div>
+      <style>
+        .success-check {
+          margin-bottom: 1.2rem;
+          animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+        .success-heading {
+          color: #1a2b3c;
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+          animation: successFadeUp 0.6s ease both 0.2s;
+        }
+        .success-text {
+          color: #555;
+          font-size: 1.05rem;
+          line-height: 1.6;
+          animation: successFadeUp 0.6s ease both 0.35s;
+        }
+        @keyframes successPop {
+          0% { opacity: 0; transform: scale(0.3); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes successFadeUp {
+          0% { opacity: 0; transform: translateY(12px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .confetti-piece {
+          position: fixed;
+          top: -10px;
+          width: 10px;
+          height: 10px;
+          opacity: 0;
+          pointer-events: none;
+          z-index: 9999;
+          animation: confettiFall linear forwards;
+        }
+        @keyframes confettiFall {
+          0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+          80% { opacity: 1; }
+          100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+        }
+      </style>
+      <script>
+      (function() {
+        var form = document.getElementById('guide-form');
+        var success = document.getElementById('form-success');
+
+        function launchConfetti() {
+          var colors = ['#00aeef', '#4fc8f5', '#cc8a48', '#122a3a', '#e6f6fd', '#b07638'];
+          var shapes = ['square', 'circle'];
+          for (var i = 0; i < 80; i++) {
+            var el = document.createElement('div');
+            el.className = 'confetti-piece';
+            var color = colors[Math.floor(Math.random() * colors.length)];
+            var shape = shapes[Math.floor(Math.random() * shapes.length)];
+            var size = Math.random() * 8 + 6;
+            var left = Math.random() * 100;
+            var duration = Math.random() * 2 + 2;
+            var delay = Math.random() * 1.5;
+            el.style.left = left + 'vw';
+            el.style.width = size + 'px';
+            el.style.height = size + 'px';
+            el.style.backgroundColor = color;
+            el.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+            el.style.animationDuration = duration + 's';
+            el.style.animationDelay = delay + 's';
+            document.body.appendChild(el);
+            (function(element, d, dl) {
+              setTimeout(function() { element.remove(); }, (d + dl) * 1000 + 200);
+            })(el, duration, delay);
+          }
+        }
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(form);
+          var params = new URLSearchParams(data).toString();
+          var url = 'https://wellspringthrive.us13.list-manage.com/subscribe/post-json?u=8916cf1013f9ba45c244a58d4&id=f9674ff996&f_id=00487ce9f0&' + params + '&c=mcCallback';
+          window.mcCallback = function(resp) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+            launchConfetti();
+            document.head.removeChild(script);
+            delete window.mcCallback;
+          };
+          var script = document.createElement('script');
+          script.src = url;
+          document.head.appendChild(script);
+        });
+      })();
+      </script>
       <p class="hero-left-description">What's inside the guide:</p>
       <ul class="inside-list">
         <li>
           <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#00aeef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>A scored self-assessment across eight areas of church readiness</span>
+          <span>Eight barriers that prevent people in your church from getting help</span>
         </li>
         <li>
           <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#00aeef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>Eight barriers that prevent people in your church from getting help</span>
+          <span>A scored self-assessment across eight areas of church readiness</span>
         </li>
         <li>
           <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#00aeef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
