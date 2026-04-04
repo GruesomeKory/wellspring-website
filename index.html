@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>When The Church Becomes the Frontline | Wellspring</title>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E33B1W7X6V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E33B1W7X6V');
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -668,6 +676,10 @@
             form.style.display = 'none';
             success.style.display = 'block';
             launchConfetti();
+            gtag('event', 'form_submission', {
+              event_category: 'Lead',
+              event_label: 'Guide Download Form'
+            });
             document.head.removeChild(script);
             delete window.mcCallback;
           };
@@ -869,6 +881,34 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 4000);
+  });
+})();
+</script>
+<script>
+(function() {
+  // Track nav CTA click
+  var navCta = document.querySelector('.nav-cta');
+  if (navCta) navCta.addEventListener('click', function() {
+    gtag('event', 'click', { event_category: 'CTA', event_label: 'Nav - Get the Free Guide' });
+  });
+
+  // Track Calendly link click
+  var calendlyBtn = document.querySelector('.btn-secondary');
+  if (calendlyBtn) calendlyBtn.addEventListener('click', function() {
+    gtag('event', 'click', { event_category: 'CTA', event_label: 'Schedule 30-Minute Call' });
+  });
+
+  // Track section views
+  ['who-for', 'stats', 'about', 'consultation'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        gtag('event', 'section_view', { event_category: 'Engagement', event_label: id });
+        obs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    obs.observe(el);
   });
 })();
 </script>
